@@ -22,6 +22,16 @@ var photoList = [{
     dataUrl: "http://localhost:3000/data/photo002.jpg"
 }]
 
+// View EngineにEJSを指定。
+app.set('view engine', 'ejs');
+
+
+
+// 写真リストを取得するAPI
+app.get("/api/photo/list", function (req, res, next) {
+    res.json(photoList);
+});
+
 // 写真リストを取得するAPI
 app.get("/api/photo/:photoId", function (req, res, next) {
     var photo;
@@ -31,4 +41,14 @@ app.get("/api/photo/:photoId", function (req, res, next) {
         }
     }
     res.json(photo);
+});
+
+
+// "/"へのGETリクエストでindex.ejsを表示する。拡張子（.ejs）は省略されていることに注意。
+app.get("/", function (req, res, next) {
+    res.render("index", {});
+});
+
+app.get("/maker", function (req, res, next) {
+    res.render("maker", {});
 });
