@@ -46,9 +46,9 @@ app.get("/api/photo/:photoId", function (req, res, next) {
 
 // "/"へのGETリクエストでindex.ejsを表示する。拡張子（.ejs）は省略されていることに注意。
 app.get("/", function (req, res, next) {
-    res.render("index", {});
+    res.render("index/index", {});
 });
 
 app.get("/maker", function (req, res, next) {
-    res.render("maker", {});
+    res.render("maker/index", {});
 });
