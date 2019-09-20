@@ -8,6 +8,7 @@ var server = app.listen(3000, function () {
 });
 
 /* 3. 以後、アプリケーション固有の処理 */
+app.use(express.static(__dirname));
 
 // 写真のサンプルデータ
 var photoList = [{
@@ -42,7 +43,6 @@ app.get("/api/photo/:photoId", function (req, res, next) {
     }
     res.json(photo);
 });
-
 
 // "/"へのGETリクエストでindex.ejsを表示する。拡張子（.ejs）は省略されていることに注意。
 app.get("/", function (req, res, next) {

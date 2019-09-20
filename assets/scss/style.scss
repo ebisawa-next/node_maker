@@ -1,2 +1,7 @@
 @import './variables/__variables';
 @import './pages/__pages';
+
+h1 {
+    color: $orange-homes;
+    font-weight: normal;
+}
