@@ -1,0 +1,19 @@
+.mod-tab {
+}
+.mod-tab-items {
+    display: flex;
+    &-item {
+        border: 5px solid $orange-homes;
+        border-bottom: 0;
+        border-radius: 10px 10px 0 0;
+        padding: 10px 5px 15px 5px;
+        transition: .2s;
+        &:not(:first-child) {
+            margin-left: -5px;
+        }
+        &:hover {
+            background-color: $orange-homes;
+            transform: translateY(-5px);
+        }
+    }
+}

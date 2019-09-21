@@ -2,19 +2,17 @@
 <head>
     <title>NEXT STAFF MAKER</title>
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
-    <script src="/assets/js/pages/maker/oshushi.js"></script>
+    <script src="/assets/js/pages/maker/tab.js"></script>
 </head>
 <body>
     <section class="sec-container">
         <h1>New Project Maker</h1>
-
         <section class="sec-maker">
             <section class="sec-maker-canvas">
                 <%- include('./modules/canvas', {}) %>
             </section>
             <section class="sec-maker-parts">
-                <p>おしゅし！</p>
-                <%- include('./modules/tab', {}) %>
+                <%- include('./modules/tab', tabs) %>
                 <%- include('./modules/frame', {}) %>
             </section>
         </section>

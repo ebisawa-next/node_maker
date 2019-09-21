@@ -1,11 +1,16 @@
 /* 1. expressモジュールをロードし、インスタンス化してappに代入。*/
-var express = require("express");
+var express = require('express');
+const fs = require ('fs');
+const util = require('util');
+const readdir = util.promisify(fs.readdir).bind(util);
+
 var app = express();
 
 /* 2. listen()メソッドを実行して3000番ポートで待ち受け。*/
 var server = app.listen(3000, function () {
     console.log("Node.js is listening to PORT:" + server.address().port);
 });
+
 
 /* 3. 以後、アプリケーション固有の処理 */
 app.use(express.static(__dirname));
@@ -23,9 +28,23 @@ var photoList = [{
     dataUrl: "http://localhost:3000/data/photo002.jpg"
 }]
 
+
+// タブ画像引っ張ってみる
+app.get('/api/maker/tab', function (req, res, next) {
+    // タブ取得してみる
+    (async () => {
+        const tabs = await readdir('./assets/images/pages/maker/tab');
+        let sushi = [];
+        for (var i = 0; i < tabs.length; i++) {
+            sushi.push({
+                name: tabs[i]
+            })
+        }
+        res.json(sushi)
+    })();
+});
 // View EngineにEJSを指定。
 app.set('view engine', 'ejs');
-
 
 
 // 写真リストを取得するAPI
@@ -50,5 +69,9 @@ app.get("/", function (req, res, next) {
 });
 
 app.get("/maker", function (req, res, next) {
-    res.render("maker/index", {});
+    // タブ取得してみる
+    (async () => {
+        const tabs = await readdir('./assets/images/pages/maker/tab');
+        res.render("maker/index", { tabs: tabs });
+    })();
 });
