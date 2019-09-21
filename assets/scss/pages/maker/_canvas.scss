@@ -4,4 +4,23 @@
     border: 10px solid $orange-homes;
     border-radius: 5px;
     box-sizing: border-box;
+    &-parts {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        list-style: none;
+        &-part {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-size: contain;
+        }
+    }
+}
+@for $i from 1 through 20 {
+    .mod-canvas-parts-part:nth-child(#{$i}) {
+        z-index: $i;
+    }
 }

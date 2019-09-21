@@ -2,7 +2,6 @@
 <head>
     <title>NEXT STAFF MAKER</title>
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
-    <script src="/assets/js/pages/maker/tab.js"></script>
 </head>
 <body>
     <section class="sec-container">
@@ -13,10 +12,12 @@
             </section>
             <section class="sec-maker-parts">
                 <%- include('./modules/tab', tabs) %>
-                <%- include('./modules/frame', {}) %>
+                <%- include('./modules/frame', parts) %>
             </section>
         </section>
     </section>
 
+    <script src="/assets/js/pages/maker/tab.js"></script>
+    <script src="/assets/js/pages/maker/frame.js"></script>
 </body>
 </html>

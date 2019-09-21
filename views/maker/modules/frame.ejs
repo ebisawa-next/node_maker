@@ -1,8 +1,15 @@
-<div class="mod-frame">
+<div class="mod-frame" id="prg-frame">
     <p>パーツのパターン決めるところ</p>
     <ul class="mod-frame-parts">
-        <li class="mod-frame-parts-part">
-            <img src="#">
+        <li class="mod-frame-parts-part prg-parts" data-parts="">
+            <img src="/assets/images/pages/maker/parts/none_s.png">
         </li>
+        <% for (let i in parts) { %>
+            <% if (parts[i] != 'cv') { %>
+                <li class="mod-frame-parts-part prg-parts" data-parentcategory="" data-category="face" data-path="<%- parts[i] %>">
+                    <img src="/assets/images/pages/maker/parts/face/<%- parts[i] %>">
+                </li>
+            <% } %>
+        <% } %>
     </ul>
 </div>

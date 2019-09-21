@@ -3,4 +3,28 @@
     height: 400px;
     margin-top: -5px;
     border: 5px solid $orange-homes;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.mod-frame-parts {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    &-part {
+        width: 100px;
+        height: 100px;
+        background-color: $yellow-ivoly;
+        transition: .15s;
+        &:not(:nth-child(5n)) {
+            margin-right: 10px;
+        }
+        &:nth-child(n+6) {
+            margin-top: 10px;
+        }
+        &:hover {
+            background-color: $orange-homes;
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+    }
 }

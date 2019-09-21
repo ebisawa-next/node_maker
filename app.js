@@ -68,10 +68,113 @@ app.get("/", function (req, res, next) {
     res.render("index/index", {});
 });
 
-app.get("/maker", function (req, res, next) {
-    // タブ取得してみる
+
+// カテゴリの設定
+const categories = [
+    {
+        name: 'face',
+        children: null
+    },
+    {
+        name: 'front',
+        children: null
+    },
+    {
+        name: 'back',
+        children: null
+    },
+    {
+        name: 'eye',
+        children: null
+    },
+    {
+        name: 'nose',
+        children: null
+    },
+    {
+        name: 'mouse',
+        children: null
+    },
+    {
+        name: 'cloth',
+        children: [
+            {
+                name: 'bottoms'
+            }
+        ]
+    },
+    {
+        name: 'accessories',
+        children: [
+            {
+                name: 'glass'
+            },
+            {
+                name: 'head'
+            }
+        ]
+    },
+    {
+        name: 'free',
+        children: [
+            {
+                name: 'back'
+            },
+            {
+                name: 'front'
+            }
+        ]
+    },
+    {
+        name: 'bg',
+        children: null
+    }
+]
+
+const getImagePathes = async (categories) => {
+    let res = [];
+    // for (const category of categories) {
+    //     if(category.children) {
+    //         const a = []
+    //         for(const child of category.children) {
+    //             const childPathes = await readdir(`./assets/images/pages/maker/parts/${category.name}/${child.name}`)
+    //             await a.push(childPathes)
+    //         }
+    //         await res.push(pathes);
+    //     } else {
+    //         const pathes = await readdir(`./assets/images/pages/maker/parts/${category.name}`)
+    //         await res.push(pathes)
+    //     }
+    // }
+    for (const category of categories) {
+        if(category.children) {
+            const a = []
+            for(const child of category.children) {
+                const childPathes = await readdir(`./assets/images/pages/maker/parts/${category.name}/${child.name}`)
+                await a.push(childPathes)
+            }
+            await res.push(a);
+        } else {
+            const pathes = await readdir(`./assets/images/pages/maker/parts/${category.name}`)
+            await res.push(pathes)
+        }
+    }
+    return res;
+}
+var framePathes;
+
+app.get("/maker", (req, res, next) => {
     (async () => {
-        const tabs = await readdir('./assets/images/pages/maker/tab');
-        res.render("maker/index", { tabs: tabs });
+        const tabs = categories;
+        const sushi = await getImagePathes(categories)
+        console.log(sushi)
+        const parts = await readdir('./assets/images/pages/maker/parts/face');
+        res.render("./maker/index", {
+            tabs: tabs,
+            parts: parts
+        });
     })();
 });
+
+// makerのrouter
+// app.use('/', require('./routes/maker.js'));
