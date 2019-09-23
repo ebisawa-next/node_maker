@@ -133,35 +133,27 @@ const categories = [
 
 const getImagePathes = async (categories) => {
     let res = [];
-    // for (const category of categories) {
-    //     if(category.children) {
-    //         const a = []
-    //         for(const child of category.children) {
-    //             const childPathes = await readdir(`./assets/images/pages/maker/parts/${category.name}/${child.name}`)
-    //             await a.push(childPathes)
-    //         }
-    //         await res.push(pathes);
-    //     } else {
-    //         const pathes = await readdir(`./assets/images/pages/maker/parts/${category.name}`)
-    //         await res.push(pathes)
-    //     }
-    // }
     for (const category of categories) {
         if(category.children) {
             const a = []
             for(const child of category.children) {
                 const childPathes = await readdir(`./assets/images/pages/maker/parts/${category.name}/${child.name}`)
+                childPathes.filter((childPath) => {
+                    return childPath != 'cv'
+                })
                 await a.push(childPathes)
             }
             await res.push(a);
         } else {
             const pathes = await readdir(`./assets/images/pages/maker/parts/${category.name}`)
+            pathes.filter((path) => {
+                return path != 'cv'
+            })
             await res.push(pathes)
         }
     }
     return res;
 }
-var framePathes;
 
 app.get("/maker", (req, res, next) => {
     (async () => {

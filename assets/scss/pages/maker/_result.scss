@@ -1,11 +1,13 @@
 .mod-result {
-    position: absolute;
-    z-index: 1000;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba($mono-black, .7);
+    &-background {
+        position: absolute;
+        z-index: 1000;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba($mono-black, .7);
+    }
     &-container {
         width: 75vw;
         padding: 30px 15px;
@@ -21,12 +23,46 @@
         display: flex;
     }
     &-icon {
-
+        // width: 200px;
+        // height: 200px;
+    }
+    &-downloads {
+        & + & {
+            margin-top: 20px;
+        }
     }
     &-download {
+        width: 250px;
+        box-sizing: border-box;
+        border: 8px solid $orange-homes;
+        border-radius: 4px;
+        padding: 15px 0;
+        text-align: center;
+        font-weight: bold;
+        font-size: 20px;
+        display: block;
+        text-decoration: none;
+        color: $orange-homes;
+        &:hover {
+            background-color: $orange-homes;
+            color: $mono-white;
+            cursor: pointer;
+        }
+        &.is-onemore {
+            color: $blue-cerulean;
+            border-color: $blue-cerulean;
+            &:hover {
+                color: $mono-white;
+                background-color: $blue-cerulean;
+            }
+        }
         &-wrapper {
             flex: 1;
             margin-left: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
         }
     }
 }

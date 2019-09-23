@@ -13,7 +13,7 @@
             </section>
             <section class="sec-maker-parts">
                 <%- include('./modules/tab', tabs) %>
-                <%- include('./modules/frame', parts) %>
+                <%- include('./modules/frame', {parts: parts, category: 'face'}) %>
             </section>
         </section>
     </section>
@@ -26,5 +26,6 @@
     <script src="/assets/js/pages/maker/tab.js" type="module"></script>
     <script src="/assets/js/pages/maker/frame.js" type="module"></script>
     <script src="/assets/js/pages/maker/createButton.js"></script>
+    <script src="/assets/js/pages/maker/result.js"></script>
 </body>
 </html>

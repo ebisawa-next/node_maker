@@ -11,7 +11,8 @@
         &:not(:first-child) {
             margin-left: -5px;
         }
-        &:hover {
+        &:hover,
+        &.is-selected {
             background-color: $orange-homes;
             transform: translateY(-5px);
         }
