@@ -4,6 +4,7 @@
   "description": "oshushi",
   "main": "index.js",
   "scripts": {
+    "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-css": "node-sass --include-path assets/scss assets/scss/style.scss assets/css/style.css",
     "watch-css": "nodemon -e scss -x \"npm run build-css\"",
@@ -20,6 +21,7 @@
     "browser-sync": "^2.23.3",
     "concurrently": "^3.5.1",
     "node-sass": "^4.7.2",
-    "nodemon": "^1.14.7"
+    "nodemon": "^1.14.7",
+    "webpack": "^4.40.2"
   }
 }

@@ -9,6 +9,7 @@
         <section class="sec-maker">
             <section class="sec-maker-canvas">
                 <%- include('./modules/canvas', {}) %>
+                <%- include('./modules/createButton', {}) %>
             </section>
             <section class="sec-maker-parts">
                 <%- include('./modules/tab', tabs) %>
@@ -16,8 +17,14 @@
             </section>
         </section>
     </section>
+    <section class="sec-overlay is-hide" id="prg-overlay">
+        <%- include('./modules/result.ejs', {}) %> 
+    </section>
 
-    <script src="/assets/js/pages/maker/tab.js"></script>
-    <script src="/assets/js/pages/maker/frame.js"></script>
+
+    <script src="/assets/js/lib/html2canvas.js" type="module"></script>
+    <script src="/assets/js/pages/maker/tab.js" type="module"></script>
+    <script src="/assets/js/pages/maker/frame.js" type="module"></script>
+    <script src="/assets/js/pages/maker/createButton.js"></script>
 </body>
 </html>

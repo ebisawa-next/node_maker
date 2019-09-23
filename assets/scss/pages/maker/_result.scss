@@ -1,0 +1,32 @@
+.mod-result {
+    position: absolute;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba($mono-black, .7);
+    &-container {
+        width: 75vw;
+        padding: 30px 15px;
+        background-color: $mono-white;
+        border-radius: 8px;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        z-index: 1001;
+    }
+    &-wrapper {
+        display: flex;
+    }
+    &-icon {
+
+    }
+    &-download {
+        &-wrapper {
+            flex: 1;
+            margin-left: 20px;
+        }
+    }
+}

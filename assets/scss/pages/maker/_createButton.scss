@@ -1,0 +1,18 @@
+.mod-createButton {
+    margin-top: 15px;
+    &-face {
+        border: 4px solid $orange-homes;
+        border-radius: 4px;
+        padding: 15px 0;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: $orange-homes;
+        transition: .2s;
+        &:hover {
+            color: $mono-white;
+            background-color: $orange-homes;
+            cursor: pointer;
+        }
+    }
+}
