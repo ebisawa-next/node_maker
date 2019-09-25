@@ -4,16 +4,41 @@ const fs = require ('fs');
 const util = require('util');
 const readdir = util.promisify(fs.readdir).bind(util);
 
-var app = express();
+const multer = require('multer');
+const multipart = multer();
 
-/* 2. listen()メソッドを実行して3000番ポートで待ち受け。*/
-var server = app.listen(3000, function () {
-    console.log("Node.js is listening to PORT:" + server.address().port);
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddleware = require('webpack-hot-middleware');
+const config = require('./webpack.config.js');
+const devServerEnabled = true;
+var app = express();
+const port = 8080;
+
+/* 2. listen()メソッドを実行して8080番ポートで待ち受け。*/
+// var server = app.listen(8080, function () {
+//     console.log("Node.js is listening to PORT:" + server.address().port);
+// });
+
+if (devServerEnabled) {
+    config.plugins.push(new webpack.HotModuleReplacementPlugin());
+
+    const compiler = webpack(config);
+
+    app.use(webpackDevMiddleware(compiler, {
+        publicPath: config.output.publicPath
+    }));
+
+    app.use(webpackHotMiddleware(compiler));
+}
+app.use('/assets', express.static(__dirname + '/assets'));
+
+app.listen(port, () => {
+    console.log('Server started on port:' + port);
 });
 
-
 /* 3. 以後、アプリケーション固有の処理 */
-app.use(express.static(__dirname));
+// app.use(express.static(__dirname));
 
 // 写真のサンプルデータ
 var photoList = [{
@@ -118,17 +143,10 @@ const categories = [
         name: 'free',
         children: [
             {
-                name: 'back'
-            },
-            {
                 name: 'front'
             }
         ]
     },
-    {
-        name: 'bg',
-        children: null
-    }
 ]
 
 const getImagePathes = async (categories) => {

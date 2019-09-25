@@ -1,3 +1,6 @@
 node_modules/
 assets/css/
 .DS_Store
+dist/
+src/scss/style.css
+src/scss/style.css.map
