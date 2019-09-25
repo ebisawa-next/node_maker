@@ -9,7 +9,7 @@ const enabledSourceMap = MODE === "development";
 module.exports = {
     mode: MODE,
     devServer: {
-        contentBase: path.join(__dirname, 'assets'),
+        contentBase: path.join(__dirname, 'views'),
         port: 8080,
         host: `localhost`,
     },
@@ -88,9 +88,10 @@ module.exports = {
                     options: {
                         name: '[name].[ext]',
                         outputPath: 'images/',
-                        publicPath: function (path) {
-                            return '../' + path;
-                        }
+                        publicPath: path => `.._/${path}`
+                        // publicPath: function (path) {
+                        //     return '../' + path;
+                        // }
                         /* es2015ならば
                         publicPath : path => '../' + path
                         で書けます。*/
