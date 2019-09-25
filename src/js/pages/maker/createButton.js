@@ -1,6 +1,5 @@
-// import html2canvas from "/assets/js/lib/html2canvas.js";
-
-export default (html2canvas) => {
+const html2canvcas = require("../../lib/html2canvas.js");
+export default () => {
     (() => {
         const faceframe = document.querySelector('#prg-canvas-faceframe')
         const createButton = document.querySelector('#prg-createButton');
