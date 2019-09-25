@@ -118,17 +118,10 @@ const categories = [
         name: 'free',
         children: [
             {
-                name: 'back'
-            },
-            {
                 name: 'front'
             }
         ]
     },
-    {
-        name: 'bg',
-        children: null
-    }
 ]
 
 const getImagePathes = async (categories) => {
