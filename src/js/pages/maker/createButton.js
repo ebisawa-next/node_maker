@@ -1,4 +1,3 @@
-const html2canvcas = require("../../lib/html2canvas.js");
 export default () => {
     (() => {
         const faceframe = document.querySelector('#prg-canvas-faceframe')
