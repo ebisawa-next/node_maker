@@ -1,4 +1,7 @@
 export default () => {
+    // frameの一番最初だけis-selectedしておく
+    document.querySelector('.prg-frameArea').classList.add('is-selected');
+
     function addEventListener () {
         const parts = document.querySelectorAll('.prg-frame-parts');
         for (const part of parts) {

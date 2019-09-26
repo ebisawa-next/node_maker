@@ -199,13 +199,12 @@ const getImagePathes = async (categories) => {
             const obj = {}
             const parentName = category.name
             obj.name = parentName
-            obj.parts = null
-            obj.children = []
+            obj.parts = []
+            obj.children = true
             for(const child of category.children) {
                 const pathes = await getDirectoryPathes(child.name, parentName)
-                obj.children.push(pathes)
+                obj.parts.push(pathes)
             }
-            // res.push(a)
             res.push(obj)
         } else {
             const obj = await getDirectoryPathes(category.name)
@@ -218,7 +217,6 @@ app.get("/maker", (req, res, next) => {
     (async () => {
         const tabs = categories;
         const parts = await getImagePathes(categories)
-        // const parts = await readdir('./assets/images/pages/maker/parts/face');
         res.render("./maker/index", {
             tabs: tabs,
             categories: parts

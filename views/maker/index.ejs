@@ -14,10 +14,8 @@
             <section class="sec-maker-parts">
                 <%- include('./modules/tab', {categories: categories}) %>
                 <section class="sec-maker-parts-frame">
-                    <%- include('./modules/frame', {category: categories[0]}) %>
-                    </secton>
                     <% for (const [index, category] of categories.entries()) { %>
-                    <%- category.name %>
+                        <%- include('./modules/frame', {category: category}) %>
                     <% } %>
                 </section>
             </section>

@@ -19,16 +19,29 @@
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
+            overflow-y: scroll;
             &-category {
                 border-bottom: 2px solid #d8d8d8;
                 padding: 10px 20px;
             }
-
             &-parts {
                 flex: 1;
                 padding: 20px;
+                overflow-y: scroll;
             }
         }
+    }
+}
+.sec-frameArea {
+    opacity: 0;
+    transition: .2s;
+    display: none;
+    &.is-selected {
+        display: block;
+        opacity: 1;
+    }
+    & + & {
+        margin-top: 20px;
     }
 }
 .sec-overlay {
