@@ -40,9 +40,6 @@
         display: block;
         opacity: 1;
     }
-    & + & {
-        margin-top: 20px;
-    }
 }
 .sec-overlay {
     visibility: visible;

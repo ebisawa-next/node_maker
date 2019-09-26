@@ -16,18 +16,6 @@
     }
 }
 
-.mod-selectCategory {
-    list-style: none;
-    display: flex;
-    &-category {
-        width: 40px;
-        height: 40px;
-        &:not(:first-child) {
-            margin-left: 20px;
-        }
-    }
-}
-
 
 .mod-selectParts {
     list-style: none;

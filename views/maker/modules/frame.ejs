@@ -2,13 +2,7 @@
     <!-- 子カテゴリがあれば表示 -->
     <% if (category.children) { %>
     <section class="sec-maker-parts-frame-category">
-        <ul class="mod-selectCategory">
-            <li class="mod-selectCategory-category">あ</li>
-            <li class="mod-selectCategory-category">い</li>
-            <li class="mod-selectCategory-category">う</li>
-            <li class="mod-selectCategory-category">え</li>
-            <li class="mod-selectCategory-category">お</li>
-        </ul>
+        <%- include('./selectCategory', {childCategories: category.parts}) %>
     </section>
     <% } %>
 
