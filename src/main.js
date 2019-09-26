@@ -1,5 +1,11 @@
+// scss
 import './scss/style.scss';
+
+// library
 import html2canvas from './js/lib/html2canvas'
+import Pickr from '@simonwep/pickr'
+
+// modules
 import createButton from './js/pages/maker/createButton'
 import frame from './js/pages/maker/frame'
 import result from './js/pages/maker/result'
@@ -10,4 +16,4 @@ createButton(html2canvas)
 frame()
 result()
 tab()
-selectBackgroundColor()
+selectBackgroundColor(Pickr)
