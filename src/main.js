@@ -11,9 +11,11 @@ import frame from './js/pages/maker/frame'
 import result from './js/pages/maker/result'
 import tab from './js/pages/maker/tab'
 import selectBackgroundColor from './js/pages/maker/selectBackgroundColor'
+import selectCategory from './js/pages/maker/selectCategory'
 
 createButton(html2canvas)
 frame()
 result()
 tab()
 selectBackgroundColor(Pickr)
+selectrCategory()
