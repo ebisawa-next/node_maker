@@ -11,6 +11,25 @@
     &-parts {
         flex: 1;
         margin-left: 20px;
+        &-frame {
+            width: 100%;
+            height: 400px;
+            margin-top: -5px;
+            border: 5px solid $orange-homes;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+
+            &-category {
+                border-bottom: 2px solid #d8d8d8;
+                padding: 10px 20px;
+            }
+
+            &-parts {
+                flex: 1;
+                padding: 20px;
+            }
+        }
     }
 }
 .sec-overlay {
