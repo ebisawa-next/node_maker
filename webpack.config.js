@@ -3,11 +3,13 @@ const path = require('path');
 // 'production' か 'development' を指定
 const MODE = "development";
 
+// CSSを別に出力するのに使うプラグイン
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 // ソースマップの利用有無(productionのときはソースマップを利用しない)
 const enabledSourceMap = MODE === "development";
 
+// webpack設定
 module.exports = {
     mode: MODE,
     devServer: {
@@ -16,6 +18,8 @@ module.exports = {
         host: `localhost`,
     },
     // メインとなるJavaScriptファイル（エントリーポイント）
+    // babelはES6適用するため
+    // hotreloadの設定を配列に追記している
     entry: {
         app:[
             '@babel/polyfill',
@@ -84,23 +88,12 @@ module.exports = {
                         },
                     },
                 ],
-            },
-            // {
-            //     test: /\.(jpg|png|gif)$/,
-            //     use: [{
-            //         loader: 'file-loader',
-            //         options: {
-            //             name: '[name].[ext]',
-            //             outputPath: 'images/',
-            //             publicPath: path => `.._/${path}`
-            //         }
-            //     }]
-            // }
+            }
         ]
     },
     plugins: [
         new MiniCssExtractPlugin({
-            // ファイル名を設定します
+            // テンプレートで読み込む時のファイル名
             filename: 'style.css',
         }),
     ],
