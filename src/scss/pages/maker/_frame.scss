@@ -19,8 +19,11 @@
 
 .mod-selectParts {
     list-style: none;
-    display: flex;
     flex-wrap: wrap;
+    display: none;
+    &.is-selected {
+        display: flex;
+    }
     &-part {
         width: 100px;
         height: 100px;

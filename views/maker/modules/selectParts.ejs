@@ -1,11 +1,11 @@
-<ul class="mod-selectParts">
-    <li class="mod-selectParts-part prg-frame-none" data-parentcategory="" data-category="<%- category.name %>"
+<ul class="mod-selectParts<% if (child) { %> prg-childFrame<% } %>">
+    <li class="mod-selectParts-part prg-frame-none" data-category="<%- category.name %>"
         data-path="">
         <img src="<%- url %>none_s.png">
     </li>
     <% for (let part of category.parts) { %>
         <% if (part != 'cv') { %>
-            <li class="mod-selectParts-part prg-frame-parts" data-parentcategory="" data-category="<%- category.name %>"
+            <li class="mod-selectParts-part prg-frame-parts" data-category="<%- category.name %>"
                 data-path="<%- part %>">
                 <img src="<%- url %><%- category.name %>/<%- part %>">
             </li>

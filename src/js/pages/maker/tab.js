@@ -4,7 +4,7 @@ export default () => {
 
     // 最初だけ選択済みにしておく
     document.querySelector('.prg-tab-items-item').classList.add('is-selected')
-
+    document.querySelector('.mod-selectParts').classList.add('is-selected')
     // イベントリスナ
     const event = () => {
         tabItems.forEach((tab) => {
@@ -24,8 +24,14 @@ export default () => {
                     frame.classList.remove('is-selected')
                     if (frame.dataset.category == category) {
                         frame.classList.add('is-selected')
+                        const childFrames = frame.querySelectorAll('.mod-selectParts')
+                        childFrames.forEach((childFrame) => {
+                            childFrame.classList.remove('is-selected')
+                        })
+                        childFrames[0].classList.add('is-selected')
                     }
                 })
+
             }, false)
         })
     }

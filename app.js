@@ -215,10 +215,8 @@ const getImagePathes = async (categories) => {
 }
 app.get("/maker", (req, res, next) => {
     (async () => {
-        const tabs = categories;
         const parts = await getImagePathes(categories)
         res.render("./maker/index", {
-            tabs: tabs,
             categories: parts
         });
     })();
