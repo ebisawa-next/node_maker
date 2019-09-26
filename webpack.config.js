@@ -3,6 +3,8 @@ const path = require('path');
 // 'production' か 'development' を指定
 const MODE = "development";
 
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 // ソースマップの利用有無(productionのときはソースマップを利用しない)
 const enabledSourceMap = MODE === "development";
 
@@ -29,7 +31,6 @@ module.exports = {
         // 出力ファイル名
         filename: "bundle.js"
     },
-    plugins: [],
     module: {
         rules: [
             {
@@ -52,34 +53,37 @@ module.exports = {
                     }
                 }]
             },
+            // Sassファイルの読み込みとコンパイル
             {
                 test: /\.scss/, // 対象となるファイルの拡張子
                 use: [
-                    // linkタグに出力する機能
-                    "style-loader",
+                    // CSSファイルを書き出すオプションを有効にする
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                    },
                     // CSSをバンドルするための機能
                     {
-                        loader: "css-loader",
+                        loader: 'css-loader',
                         options: {
                             // オプションでCSS内のurl()メソッドの取り込みを禁止する
                             url: false,
                             // ソースマップの利用有無
-                            // sourceMap: enabledSourceMap,
+                            sourceMap: enabledSourceMap,
 
                             // 0 => no loaders (default);
                             // 1 => postcss-loader;
                             // 2 => postcss-loader, sass-loader
-                            importLoaders: 2
-                        }
+                            importLoaders: 2,
+                        },
                     },
                     {
-                        loader: "sass-loader",
+                        loader: 'sass-loader',
                         options: {
                             // ソースマップの利用有無
-                            sourceMap: enabledSourceMap
-                        }
-                    }
-                ]
+                            sourceMap: enabledSourceMap,
+                        },
+                    },
+                ],
             },
             // {
             //     test: /\.(jpg|png|gif)$/,
@@ -93,5 +97,11 @@ module.exports = {
             //     }]
             // }
         ]
-    }
+    },
+    plugins: [
+        new MiniCssExtractPlugin({
+            // ファイル名を設定します
+            filename: 'style.css',
+        }),
+    ],
 };

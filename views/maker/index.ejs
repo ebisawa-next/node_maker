@@ -1,6 +1,7 @@
 <html>
 <head>
     <title>NEXT STAFF MAKER</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <section class="sec-container">
@@ -14,18 +15,17 @@
                 <%- include('./modules/tab', {categories: categories}) %>
                 <section class="sec-maker-parts-frame">
                     <%- include('./modules/frame', {category: categories[0]}) %>
-                </secton>
-                <% for (const [index, category] of categories.entries()) { %>
+                    </secton>
+                    <% for (const [index, category] of categories.entries()) { %>
                     <%- category.name %>
-                <% } %>
+                    <% } %>
+                </section>
             </section>
         </section>
     </section>
     <section class="sec-overlay is-hide" id="prg-overlay">
-        <%- include('./modules/result.ejs', {}) %> 
+        <%- include('./modules/result.ejs', {}) %>
     </section>
-
-
     <script src="bundle.js"></script>
 </body>
 </html>
