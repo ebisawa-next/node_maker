@@ -9,7 +9,7 @@ const enabledSourceMap = MODE === "development";
 module.exports = {
     mode: MODE,
     devServer: {
-        contentBase: path.join(__dirname, 'views'),
+        contentBase: path.join(__dirname, '.'),
         port: 8080,
         host: `localhost`,
     },
@@ -64,7 +64,7 @@ module.exports = {
                             // オプションでCSS内のurl()メソッドの取り込みを禁止する
                             url: false,
                             // ソースマップの利用有無
-                            sourceMap: enabledSourceMap,
+                            // sourceMap: enabledSourceMap,
 
                             // 0 => no loaders (default);
                             // 1 => postcss-loader;
@@ -81,23 +81,17 @@ module.exports = {
                     }
                 ]
             },
-            {
-                test: /\.(jpg|png|gif)$/,
-                use: [{
-                    loader: 'file-loader',
-                    options: {
-                        name: '[name].[ext]',
-                        outputPath: 'images/',
-                        publicPath: path => `.._/${path}`
-                        // publicPath: function (path) {
-                        //     return '../' + path;
-                        // }
-                        /* es2015ならば
-                        publicPath : path => '../' + path
-                        で書けます。*/
-                    }
-                }]
-            }
+            // {
+            //     test: /\.(jpg|png|gif)$/,
+            //     use: [{
+            //         loader: 'file-loader',
+            //         options: {
+            //             name: '[name].[ext]',
+            //             outputPath: 'images/',
+            //             publicPath: path => `.._/${path}`
+            //         }
+            //     }]
+            // }
         ]
     }
 };

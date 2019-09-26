@@ -11,8 +11,8 @@
                 <%- include('./modules/createButton', {}) %>
             </section>
             <section class="sec-maker-parts">
-                <%- include('./modules/tab', tabs) %>
-                <%- include('./modules/frame', {parts: parts, category: 'face'}) %>
+                <%- include('./modules/tab', {categories: categories}) %>
+                <%- include('./modules/frame', {category: categories[0]}) %>
             </section>
         </section>
     </section>

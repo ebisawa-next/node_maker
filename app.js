@@ -106,11 +106,17 @@ const categories = [
     },
     {
         name: 'back',
-        children: null
+        children: null,
+        color: [
+            '01',
+            '02',
+            '03',
+            '04'
+        ]
     },
     {
         name: 'eye',
-        children: null
+        children: null,
     },
     {
         name: 'nose',
@@ -124,8 +130,20 @@ const categories = [
         name: 'cloth',
         children: [
             {
+                name: 'tops'
+            },
+            {
                 name: 'bottoms'
-            }
+            },
+            {
+                name: 'onepiece'
+            },
+            {
+                name: 'socks'
+            },
+            {
+                name: 'shoes'
+            },
         ]
     },
     {
@@ -136,6 +154,18 @@ const categories = [
             },
             {
                 name: 'head'
+            },
+            {
+                name: 'hige'
+            },
+            {
+                name: 'hokuro'
+            },
+            {
+                name: 'pias'
+            },
+            {
+                name: 'strap'
             }
         ]
     },
@@ -149,39 +179,49 @@ const categories = [
     },
 ]
 
+const getDirectoryPathes = async (categoryName, parentName) => {
+    const obj = {}
+    let pathes
+    obj.name = categoryName
+    if (parentName) {
+        pathes = await readdir(`./assets/images/pages/maker/parts/${parentName}/${categoryName}`)
+    } else {
+        pathes = await readdir(`./assets/images/pages/maker/parts/${categoryName}`)
+    }
+    obj.parts = pathes
+    return obj
+}
+
 const getImagePathes = async (categories) => {
     let res = [];
     for (const category of categories) {
         if(category.children) {
-            const a = []
+            const obj = {}
+            const parentName = category.name
+            obj.name = parentName
+            obj.parts = null
+            obj.children = []
             for(const child of category.children) {
-                const childPathes = await readdir(`./assets/images/pages/maker/parts/${category.name}/${child.name}`)
-                childPathes.filter((childPath) => {
-                    return childPath != 'cv'
-                })
-                await a.push(childPathes)
+                const pathes = await getDirectoryPathes(child.name, parentName)
+                obj.children.push(pathes)
             }
-            await res.push(a);
+            // res.push(a)
+            res.push(obj)
         } else {
-            const pathes = await readdir(`./assets/images/pages/maker/parts/${category.name}`)
-            pathes.filter((path) => {
-                return path != 'cv'
-            })
-            await res.push(pathes)
+            const obj = await getDirectoryPathes(category.name)
+            res.push(obj)
         }
     }
-    return res;
+    return res
 }
-
 app.get("/maker", (req, res, next) => {
     (async () => {
         const tabs = categories;
-        const sushi = await getImagePathes(categories)
-        console.log(sushi)
-        const parts = await readdir('./assets/images/pages/maker/parts/face');
+        const parts = await getImagePathes(categories)
+        // const parts = await readdir('./assets/images/pages/maker/parts/face');
         res.render("./maker/index", {
             tabs: tabs,
-            parts: parts
+            categories: parts
         });
     })();
 });

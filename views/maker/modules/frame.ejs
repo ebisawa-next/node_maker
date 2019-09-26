@@ -1,15 +1,16 @@
 <div class="mod-frame">
-    <p>パーツのパターン決めるところ</p>
-    <ul class="mod-frame-parts">
-        <li class="mod-frame-parts-part prg-frame-none" data-parentcategory="" data-category="<%- category %>" data-path="">
-            <img src="/assets/images/pages/maker/parts/none_s.png">
-        </li>
-        <% for (let i in parts) { %>
-            <% if (parts[i] != 'cv') { %>
-                <li class="mod-frame-parts-part prg-frame-parts" data-parentcategory="" data-category="<%- category %>" data-path="<%- parts[i] %>">
-                    <img src="/assets/images/pages/maker/parts/face/<%- parts[i] %>">
-                </li>
-            <% } %>
-        <% } %>
-    </ul>
+    <section class="mod-frame-category">
+        <ul class="mod-selectCategory">
+            <li class="mod-selectCategory-category">あ</li>
+            <li class="mod-selectCategory-category">い</li>
+            <li class="mod-selectCategory-category">う</li>
+            <li class="mod-selectCategory-category">え</li>
+            <li class="mod-selectCategory-category">お</li>
+        </ul>
+    </section>
+    <section class="mod-frame-parts">
+        <% let url = '/assets/images/pages/maker/parts/' %>
+        <%- include('./selectParts', {category: category, url: url}) %>
+
+    </section>
 </div>

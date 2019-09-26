@@ -1,8 +1,8 @@
 <nav class="mod-tab" id="prg-tab">
     <ul class="mod-tab-items" id="prg-tab-items">
-        <% for (let i in tabs) { %>
-            <li class="mod-tab-items-item prg-tab-items-item">
-                <img src="/assets/images/pages/maker/tab/tab<%- i %>.png">
+        <% for (const [index, category] of categories.entries()) { %>
+            <li class="mod-tab-items-item prg-tab-items-item" data-tabcategory="<%- category.name %>">
+                <img src="/assets/images/pages/maker/tab/tab<%- index %>.png">
             </li>
         <% } %>
     </ul>
