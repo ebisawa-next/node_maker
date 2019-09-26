@@ -174,6 +174,9 @@ const categories = [
         children: [
             {
                 name: 'front'
+            },
+            {
+                name: 'back'
             }
         ]
     },

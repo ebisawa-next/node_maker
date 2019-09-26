@@ -2,17 +2,23 @@
     list-style: none;
     display: flex;
     &-category {
-        width: 40px;
-        height: 40px;
-        background-color: $mono-black;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
         transition: .2s;
+        background-size: contain;
         &:not(:first-child) {
             margin-left: 20px;
         }
         &:hover {
             transform: scale(1.1);
             cursor: pointer;
+        }
+        $categories: back, bottoms, front, glass, head, hige, hokuro, onepiece, pias, shoes, socks, strap, tops;
+        @each $category in $categories {
+            &.is-#{$category} {
+                background-image: url("/assets/images/pages/maker/icon/icon_#{$category}.png");
+            }
         }
     }
 }
