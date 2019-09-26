@@ -12,24 +12,57 @@
         height: 200px;
         left: calc(50% - 100px);
         top: 30px;
+        z-index: 1;
     }
     &-parts {
-        position: relative;
-        width: 100%;
-        height: 100%;
+        width: 300px;
+        height: 450px;
         list-style: none;
+        // position: relative;
+        position: absolute;
+        left: -50px;
+        top: -30px;
+        background-color: $orange-homes;
         &-part {
             position: absolute;
-            left: -50px;
-            top: -30px;
-            width: 300px;
-            height: 450px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
             background-size: contain;
+            // 初期設定
+            &.is-face {
+                background-image:url(/assets/images/pages/maker/parts/face/cv/circle_sk01.png);
+            }
+            &.is-body {
+                background-image:url(/assets/images/pages/maker/parts/face/cv/body01_sk01.png);
+            }
+            &.is-eye {
+                background-image:url(/assets/images/pages/maker/parts/eye/cv/eye01_nml.png);
+            }
+            &.is-fronthair {
+                background-image:url(/assets/images/pages/maker/parts/fronthair/cv/front01_bk.png);
+            }
+            &.is-nose {
+                background-image:url(/assets/images/pages/maker/parts/nose/cv/nose01.png);
+            }
+            &.is-mouse {
+                background-image:url(/assets/images/pages/maker/parts/mouse/cv/mouse01.png);
+            }
+            &.is-tops {
+                background-image:url(/assets/images/pages/maker/parts/cloth/tops/cv/tops03_M.png);
+            }
+            &.is-bottoms {
+                background-image:url(/assets/images/pages/maker/parts/cloth/bottoms/cv/bottoms01_M.png);
+            }
+            &.is-shoes {
+                background-image:url(/assets/images/pages/maker/parts/cloth/shoes/cv/shoes01.png);
+            }
         }
     }
 }
 @for $i from 1 through 20 {
     .mod-canvas-parts-part:nth-child(#{$i}) {
-        z-index: $i;
+        z-index: 300 - $i * 2;
     }
 }

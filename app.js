@@ -101,11 +101,11 @@ const categories = [
         children: null
     },
     {
-        name: 'front',
+        name: 'fronthair',
         children: null
     },
     {
-        name: 'back',
+        name: 'backhair',
         children: null,
         color: [
             '01',

@@ -1,12 +1,12 @@
 <ul class="mod-selectParts prg-selectParts">
     <li class="mod-selectParts-part prg-frame-none" data-category="<%- category.name %>"
         data-path="">
-        <img src="<%- url %>none_s.png">
+        <img src="/assets/images/pages/maker/parts/none_s.png">
     </li>
     <% for (let part of category.parts) { %>
         <% if (part != 'cv') { %>
             <li class="mod-selectParts-part prg-frame-parts" data-category="<%- category.name %>"
-                data-path="<%- part %>">
+            data-path="<%- part %>" data-url="<%- url %>">
                 <img src="<%- url %><%- category.name %>/<%- part %>">
             </li>
         <% } %>
