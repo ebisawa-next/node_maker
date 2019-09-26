@@ -1,0 +1,40 @@
+.mod-selectBackgroundColor {
+    padding: 20px;
+    &-heading {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    &-list {
+        list-style: none;
+        display: flex;
+        &-item {
+            width: 20px;
+            height: 50px;
+            &:not(:first-child) {
+                margin-left: 10px;
+            }
+
+
+            $colors: (
+                red: red,
+                orange: orange,
+                yellow: yellow,
+                green: green,
+                skyblue: skyblue,
+                blue: blue,
+                purple: purple,
+                white: white,
+                grey: grey,
+                black: black
+            );
+            @each $color, $code in $colors {
+                &.is-#{$color} {
+                    background-color: $code;
+                }
+            }
+        }
+
+    }
+
+}

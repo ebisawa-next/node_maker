@@ -17,6 +17,7 @@
                     <% for (const [index, category] of categories.entries()) { %>
                         <%- include('./modules/frame', {category: category}) %>
                     <% } %>
+                    <%- include('./modules/selectBackgroundColor.ejs', {}) %>
                 </section>
             </section>
         </section>

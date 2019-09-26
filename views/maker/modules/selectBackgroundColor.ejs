@@ -1,0 +1,56 @@
+<section class="sec-frameArea prg-frameArea" data-category="background">
+    <div class="mod-selectBackgroundColor">
+        <p class="mod-selectBackgroundColor-heading">色が変わる</p>
+
+        <% const colors = 
+            [
+                {
+                    name: 'red',
+                    code: 'red'
+                },
+                {
+                    name: 'orange',
+                    code: 'orange'
+                },
+                {
+                    name: 'yellow',
+                    code: 'yellow'
+                },
+                {
+                    name: 'green',
+                    code: 'green'
+                },
+                {
+                    name: 'skyblue',
+                    code: 'skyblue'
+                },
+                {
+                    name: 'blue',
+                    code: 'blue'
+                },
+                {
+                    name: 'purple',
+                    code: 'purple'
+                },
+                {
+                    name: 'white',
+                    code: 'white'
+                },
+                {
+                    name: 'grey',
+                    code: 'white'
+                },
+                {
+                    name: 'black',
+                    code: 'black'
+                }
+            ]
+        %>
+        <ul class="mod-selectBackgroundColor-list">
+            <% for (const [index, color] of colors.entries()) { %>
+                <li class="mod-selectBackgroundColor-list-item is-<%- color.name %> prg-selectBackgroundColor-color" data-code="<%- color.code %>">
+                </li>
+            <% } %>
+        </ul>
+    </div>
+</section>
