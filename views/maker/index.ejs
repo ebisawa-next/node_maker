@@ -2,6 +2,7 @@
 <head>
     <title>NEXT STAFF MAKER</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" href="/assets/images/common/favicon.ico">
 </head>
 <body>
     <section class="sec-container">
@@ -17,7 +18,7 @@
                     <% for (const [index, category] of categories.entries()) { %>
                         <%- include('./modules/frame', {category: category}) %>
                     <% } %>
-                    <%- include('./modules/selectBackgroundColor.ejs', {}) %>
+                    <%- include('./modules/selectBackgroundColor.ejs', {backgroundColors: backgroundColors}) %>
                 </section>
             </section>
         </section>

@@ -74,115 +74,11 @@ app.get("/", function (req, res, next) {
     res.render("index/index", {});
 });
 
-// カテゴリの設定
-const categories = [
-    {
-        name: 'face',
-        children: null,
-        variation: [
-            '01',
-            '02',
-            '03',
-            '04'
-        ]
-    },
-    {
-        name: 'fronthair',
-        children: null,
-        variation: [
-            'bk',
-            'gl',
-            'gr',
-            'rb',
-            'wh',
-            'yl',
-        ]
-    },
-    {
-        name: 'backhair',
-        children: null,
-        variation: [
-            'bk',
-            'gl',
-            'gr',
-            'rb',
-            'wh',
-            'yl',
-        ]
-    },
-    {
-        name: 'eye',
-        children: null,
-        variation: [
-            'nml',
-            'ner',
-            'dst',
-        ]
-    },
-    {
-        name: 'nose',
-        children: null
-    },
-    {
-        name: 'mouse',
-        children: null
-    },
-    {
-        name: 'cloth',
-        children: [
-            {
-                name: 'tops'
-            },
-            {
-                name: 'bottoms'
-            },
-            {
-                name: 'onepiece'
-            },
-            {
-                name: 'socks'
-            },
-            {
-                name: 'shoes'
-            },
-        ]
-    },
-    {
-        name: 'accessories',
-        children: [
-            {
-                name: 'glass'
-            },
-            {
-                name: 'head'
-            },
-            {
-                name: 'hige'
-            },
-            {
-                name: 'hokuro'
-            },
-            {
-                name: 'pias'
-            },
-            {
-                name: 'strap'
-            }
-        ]
-    },
-    {
-        name: 'free',
-        children: [
-            {
-                name: 'front'
-            },
-            {
-                name: 'back'
-            }
-        ]
-    },
-]
 
+
+
+// カテゴリの設定
+const categories = require('./api/categories')
 const getDirectoryPathes = async (categoryName, parentName) => {
     const obj = {}
     let pathes
@@ -195,7 +91,6 @@ const getDirectoryPathes = async (categoryName, parentName) => {
     obj.parts = pathes
     return obj
 }
-
 const getImagePathes = async (categories) => {
     let res = [];
     for (const category of categories) {
@@ -220,14 +115,17 @@ const getImagePathes = async (categories) => {
     }
     return res
 }
+
 app.get("/maker", (req, res, next) => {
     (async () => {
         const parts = await getImagePathes(categories)
+
+        // 背景色のマスタデータ読み込む
+        const backgroundColors = require('./api/backgroundColors')
+
         res.render("./maker/index", {
-            categories: parts
+            categories: parts,
+            backgroundColors: backgroundColors
         });
     })();
 });
-
-// makerのrouter
-// app.use('/', require('./routes/maker.js'));

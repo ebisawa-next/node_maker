@@ -1,20 +1,7 @@
-const fs = require('fs');
-const util = require('util');
-const readdir = util.promisify(fs.readdir).bind(util);
-
-// カテゴリのマスタデータ
-const categories = [{
+module.exports = [{
         name: 'face',
-        children: null
-    },
-    {
-        name: 'front',
-        children: null
-    },
-    {
-        name: 'back',
         children: null,
-        color: [
+        variation: [
             '01',
             '02',
             '03',
@@ -22,8 +9,37 @@ const categories = [{
         ]
     },
     {
+        name: 'fronthair',
+        children: null,
+        variation: [
+            'bk',
+            'gl',
+            'gr',
+            'rb',
+            'wh',
+            'yl',
+        ]
+    },
+    {
+        name: 'backhair',
+        children: null,
+        variation: [
+            'bk',
+            'gl',
+            'gr',
+            'rb',
+            'wh',
+            'yl',
+        ]
+    },
+    {
         name: 'eye',
         children: null,
+        variation: [
+            'nml',
+            'ner',
+            'dst',
+        ]
     },
     {
         name: 'nose',
@@ -77,47 +93,11 @@ const categories = [{
     {
         name: 'free',
         children: [{
-            name: 'front'
-        }]
+                name: 'front'
+            },
+            {
+                name: 'back'
+            }
+        ]
     },
 ]
-
-// ディレクトリ配下のパスを読みにいくメソッド
-const getDirectoryPathes = async (categoryName, parentName) => {
-    const obj = {}
-    let pathes
-    obj.name = categoryName
-    if (parentName) {
-        pathes = await readdir(`./assets/images/pages/maker/parts/${parentName}/${categoryName}`)
-    } else {
-        pathes = await readdir(`./assets/images/pages/maker/parts/${categoryName}`)
-    }
-    obj.parts = pathes
-    return obj
-}
-
-// パスオブジェクトを生成する
-const getImagePathes = async (categories) => {
-    let res = [];
-    for (const category of categories) {
-        if (category.children) {
-            const obj = {}
-            const parentName = category.name
-            obj.name = parentName
-            obj.parts = []
-            obj.children = true
-            for (const child of category.children) {
-                const pathes = await getDirectoryPathes(child.name, parentName)
-                obj.parts.push(pathes)
-            }
-            res.push(obj)
-        } else {
-            const obj = await getDirectoryPathes(category.name)
-            res.push(obj)
-        }
-    }
-    return res
-}
-(async() => {
-    module.exports = await getImagePathes(categories)
-})()
