@@ -79,7 +79,7 @@ const categories = [
     {
         name: 'face',
         children: null,
-        color: [
+        variation: [
             '01',
             '02',
             '03',
@@ -89,7 +89,7 @@ const categories = [
     {
         name: 'fronthair',
         children: null,
-        color: [
+        variation: [
             'bk',
             'gl',
             'gr',
@@ -101,7 +101,7 @@ const categories = [
     {
         name: 'backhair',
         children: null,
-        color: [
+        variation: [
             'bk',
             'gl',
             'gr',

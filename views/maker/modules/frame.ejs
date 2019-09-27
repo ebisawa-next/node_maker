@@ -1,9 +1,15 @@
 <section class="sec-frameArea prg-frameArea" data-category="<%- category.name %>">
     <!-- 子カテゴリがあれば表示 -->
     <% if (category.children) { %>
-    <section class="sec-maker-parts-frame-category">
-        <%- include('./selectCategory', {childCategories: category.parts, parent: category.name}) %>
-    </section>
+        <section class="sec-maker-parts-frame-category">
+            <%- include('./selectCategory', {childCategories: category.parts, parent: category.name}) %>
+        </section>
+    <% } %>
+
+    <% if (category.variation) { %>
+        <section class="sec-maker-parts-frame-category">
+            <%- include('./selectCategory', {childCategories: category.parts, parent: category.name}) %>
+        </section>
     <% } %>
 
     <!-- パーツ選択するエリア -->
