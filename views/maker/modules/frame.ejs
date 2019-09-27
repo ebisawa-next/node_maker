@@ -8,7 +8,7 @@
 
     <% if (category.variation) { %>
         <section class="sec-maker-parts-frame-category">
-            <%- include('./selectCategory', {childCategories: category.parts, parent: category.name}) %>
+            <%- include('./selectVariation', {variation: category.variation, target: category.name}) %>
         </section>
     <% } %>
 

@@ -207,6 +207,9 @@ const getImagePathes = async (categories) => {
             res.push(obj)
         } else {
             const obj = await getDirectoryPathes(category.name)
+            if(category.variation) {
+                obj.variation = category.variation
+            }
             res.push(obj)
         }
     }

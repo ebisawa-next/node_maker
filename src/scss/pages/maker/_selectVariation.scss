@@ -1,0 +1,49 @@
+.mod-selectVariation {
+    list-style: none;
+    display: flex;
+    &-variate {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        transition: .2s;
+        background-size: contain;
+        &:not(:first-child) {
+            margin-left: 20px;
+        }
+        &:hover {
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+        &.is-face {
+            &01 { background-color: #fce6d2; }
+            &02 { background-color: #ffd8ae; }
+            &03 { background-color: #efb899; }
+            &04 { background-color: #d8996f; }
+        }
+        &.is-fronthair {
+            &bk { background-color: #333333; }
+            &rd { background-color: #680202; }
+            &rb { background-color: #54271c; }
+            &yl { background-color: #4f3317; }
+            &gl { background-color: #f7b733; }
+            &wh { background-color: #fffcd6; }
+            &gr { background-color: #867c76; }
+        }
+        &.is-backhair {
+            &bk { background-color: #333333; }
+            &rd { background-color: #680202; }
+            &rb { background-color: #54271c; }
+            &yl { background-color: #4f3317; }
+            &gl { background-color: #f7b733; }
+            &wh { background-color: #fffcd6; }
+            &gr { background-color: #867c76; }
+        }
+
+        $categories: back, bottoms, front, glass, head, hige, hokuro, onepiece, pias, shoes, socks, strap, tops;
+        @each $category in $categories {
+            &.is-#{$category} {
+                background-image: url("/assets/images/pages/maker/icon/icon_#{$category}.png");
+            }
+        }
+    }
+}
