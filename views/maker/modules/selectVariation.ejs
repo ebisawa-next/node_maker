@@ -1,5 +1,5 @@
-<ul class="mod-selectVariation prg-selectVariation" data-target="<%- target %>">
+<ul class="mod-selectVariation prg-selectVariation">
     <% for (const variate of variation) { %>
-        <li class="mod-selectVariation-variate is-<%- target %><%- variate %>"></li>
+        <li class="mod-selectVariation-variate is-<%- target %><%- variate %> prg-selectVariation-variate" data-target="<%- target %>" data-val="<%- variate %>"></li>
     <% } %>
 </ul>

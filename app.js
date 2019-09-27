@@ -113,6 +113,11 @@ const categories = [
     {
         name: 'eye',
         children: null,
+        variation: [
+            'nml',
+            'ner',
+            'dst',
+        ]
     },
     {
         name: 'nose',

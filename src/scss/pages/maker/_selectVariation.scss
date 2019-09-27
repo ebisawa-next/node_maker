@@ -38,12 +38,10 @@
             &wh { background-color: #fffcd6; }
             &gr { background-color: #867c76; }
         }
-
-        $categories: back, bottoms, front, glass, head, hige, hokuro, onepiece, pias, shoes, socks, strap, tops;
-        @each $category in $categories {
-            &.is-#{$category} {
-                background-image: url("/assets/images/pages/maker/icon/icon_#{$category}.png");
-            }
+        &.is-eye {
+            &nml { background-image: url('/assets/images/pages/maker/icon/icon_eye_nml.png'); }
+            &dst { background-image: url('/assets/images/pages/maker/icon/icon_eye_dst.png'); }
+            &ner { background-image: url('/assets/images/pages/maker/icon/icon_eye_ner.png'); }
         }
     }
 }

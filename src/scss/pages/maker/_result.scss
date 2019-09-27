@@ -9,8 +9,7 @@
         background-color: rgba($mono-black, .7);
     }
     &-container {
-        width: 75vw;
-        padding: 30px 15px;
+        padding: 50px;
         background-color: $mono-white;
         border-radius: 8px;
         top: 50%;
@@ -23,8 +22,7 @@
         display: flex;
     }
     &-icon {
-        // width: 200px;
-        // height: 200px;
+        width: 200px;
     }
     &-downloads {
         & + & {
