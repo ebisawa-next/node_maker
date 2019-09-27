@@ -9,7 +9,6 @@ export default () => {
     const event = () => {
         tabItems.forEach((tab) => {
             tab.addEventListener('click', () => {
-                console.log(tab.dataset.category)
                 const category = tab.dataset.category
 
                 // 全てのタブからis-selectedをremove
@@ -25,10 +24,13 @@ export default () => {
                     if (frame.dataset.category == category) {
                         frame.classList.add('is-selected')
                         const childFrames = frame.querySelectorAll('.mod-selectParts')
-                        childFrames.forEach((childFrame) => {
-                            childFrame.classList.remove('is-selected')
-                        })
-                        childFrames[0].classList.add('is-selected')
+                        if(childFrames.length > 0) {
+                            childFrames.forEach((childFrame) => {
+                                childFrame.classList.remove('is-selected')
+                            })
+                            childFrames[0].classList.add('is-selected')
+                        }
+
                     }
                 })
 
