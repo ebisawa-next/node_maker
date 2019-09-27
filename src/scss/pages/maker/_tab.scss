@@ -6,7 +6,10 @@
         border: 5px solid $orange-homes;
         border-bottom: 0;
         border-radius: 10px 10px 0 0;
-        padding: 10px 5px 15px 5px;
+        padding: 10px 0 15px;
+        display: flex;
+        justify-content: center;
+        flex: 1;
         transition: .2s;
         &:not(:first-child) {
             margin-left: -5px;

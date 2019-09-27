@@ -17,19 +17,26 @@
 
 
             $colors: (
-                red: red,
-                orange: orange,
-                yellow: yellow,
-                green: green,
-                skyblue: skyblue,
-                blue: blue,
-                purple: purple,
-                white: white,
-                grey: grey,
-                black: black
+                1: #ed6103,
+                2: #ffab00,
+                3: #ebebeb,
+                4: #333333,
+                5: #fefefe,
+                6: #87ceeb,
+                7: #20b2aa,
+                8: #90ee90,
+                9: #6b8e23,
+                10: #ffa500,
+                11: #a0522d,
+                12: #b22222,
+                13: #fa8072,
+                14: #dc143c,
+                15: #ffb6c1,
+                16: #da70d6,
+                17: #9370db
             );
-            @each $color, $code in $colors {
-                &.is-#{$color} {
+            @each $index, $code in $colors {
+                &.is-#{$index} {
                     background-color: $code;
                 }
             }
