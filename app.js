@@ -103,10 +103,12 @@ const getImagePathes = async (categories) => {
             for(const child of category.children) {
                 const pathes = await getDirectoryPathes(child.name, parentName)
                 obj.parts.push(pathes)
+                obj.removable = child.removable
             }
             res.push(obj)
         } else {
             const obj = await getDirectoryPathes(category.name)
+            obj.removable = category.removable
             if(category.variation) {
                 obj.variation = category.variation
             }
@@ -119,7 +121,7 @@ const getImagePathes = async (categories) => {
 app.get("/maker", (req, res, next) => {
     (async () => {
         const parts = await getImagePathes(categories)
-
+        console.log(parts)
         // 背景色のマスタデータ読み込む
         const backgroundColors = require('./api/backgroundColors')
 

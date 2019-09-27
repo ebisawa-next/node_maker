@@ -1,8 +1,10 @@
 <ul class="mod-selectParts prg-selectParts" data-category="<%- category.name %>">
-    <li class="mod-selectParts-part prg-frame-none" data-category="<%- category.name %>"
-        data-path="">
-        <img src="/assets/images/pages/maker/parts/none_s.png">
-    </li>
+    <% if (category.removable) { %>
+        <li class="mod-selectParts-part prg-frame-none" data-category="<%- category.name %>"
+            data-path="">
+            <img src="/assets/images/pages/maker/parts/none_s.png">
+        </li>
+    <% } %>
     <% for (let part of category.parts) { %>
         <% if (part != 'cv') { %>
             <li class="mod-selectParts-part prg-frame-parts" data-category="<%- category.name %>"

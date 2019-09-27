@@ -6,7 +6,8 @@ module.exports = [{
             '02',
             '03',
             '04'
-        ]
+        ],
+        removable: false
     },
     {
         name: 'fronthair',
@@ -18,7 +19,8 @@ module.exports = [{
             'rb',
             'wh',
             'yl',
-        ]
+        ],
+        removable: true,
     },
     {
         name: 'backhair',
@@ -30,7 +32,8 @@ module.exports = [{
             'rb',
             'wh',
             'yl',
-        ]
+        ],
+        removable: true,
     },
     {
         name: 'eye',
@@ -39,64 +42,80 @@ module.exports = [{
             'nml',
             'ner',
             'dst',
-        ]
+        ],
+        removable: false
     },
     {
         name: 'nose',
-        children: null
+        children: null,
+        removable: true,
     },
     {
         name: 'mouse',
-        children: null
+        children: null,
+        removable: false,
     },
     {
         name: 'cloth',
         children: [{
-                name: 'tops'
+                name: 'tops',
+                removable: true,
             },
             {
-                name: 'bottoms'
+                name: 'bottoms',
+                removable: true,
             },
             {
-                name: 'onepiece'
+                name: 'onepiece',
+                removable: true
             },
             {
-                name: 'socks'
+                name: 'socks',
+                removable: true
             },
             {
-                name: 'shoes'
+                name: 'shoes',
+                removable: true
             },
         ]
     },
     {
         name: 'accessories',
         children: [{
-                name: 'glass'
+                name: 'glass',
+                removable: true
             },
             {
-                name: 'head'
+                name: 'head',
+                removable: true
             },
             {
-                name: 'hige'
+                name: 'hige',
+                removable: true
             },
             {
-                name: 'hokuro'
+                name: 'hokuro',
+                removable: true
             },
             {
-                name: 'pias'
+                name: 'pias',
+                removable: true
             },
             {
-                name: 'strap'
+                name: 'strap',
+                removable: true
             }
         ]
     },
     {
         name: 'free',
         children: [{
-                name: 'front'
+                name: 'front',
+                removable: false,
             },
             {
-                name: 'back'
+                name: 'back',
+                removable: false
             }
         ]
     },
