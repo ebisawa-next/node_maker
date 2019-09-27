@@ -37,8 +37,8 @@ app.listen(port, () => {
     console.log('Server started on port:' + port);
 });
 
-/* 3. 以後、アプリケーション固有の処理 */
-// app.use(express.static(__dirname));
+// View EngineにEJSを指定。
+app.set('view engine', 'ejs');
 
 // 写真のサンプルデータ
 var photoList = [{
@@ -52,25 +52,6 @@ var photoList = [{
     type: "jpg",
     dataUrl: "http://localhost:3000/data/photo002.jpg"
 }]
-
-
-// タブ画像引っ張ってみる
-app.get('/api/maker/tab', function (req, res, next) {
-    // タブ取得してみる
-    (async () => {
-        const tabs = await readdir('./assets/images/pages/maker/tab');
-        let sushi = [];
-        for (var i = 0; i < tabs.length; i++) {
-            sushi.push({
-                name: tabs[i]
-            })
-        }
-        res.json(sushi)
-    })();
-});
-// View EngineにEJSを指定。
-app.set('view engine', 'ejs');
-
 
 // 写真リストを取得するAPI
 app.get("/api/photo/list", function (req, res, next) {
@@ -93,25 +74,40 @@ app.get("/", function (req, res, next) {
     res.render("index/index", {});
 });
 
-
 // カテゴリの設定
 const categories = [
     {
         name: 'face',
-        children: null
-    },
-    {
-        name: 'fronthair',
-        children: null
-    },
-    {
-        name: 'backhair',
         children: null,
         color: [
             '01',
             '02',
             '03',
             '04'
+        ]
+    },
+    {
+        name: 'fronthair',
+        children: null,
+        color: [
+            'bk',
+            'gl',
+            'gr',
+            'rb',
+            'wh',
+            'yl',
+        ]
+    },
+    {
+        name: 'backhair',
+        children: null,
+        color: [
+            'bk',
+            'gl',
+            'gr',
+            'rb',
+            'wh',
+            'yl',
         ]
     },
     {
