@@ -11,8 +11,11 @@
             margin-left: 20px;
         }
         &:hover {
-            transform: scale(1.1);
+            transform: scale(1.2);
             cursor: pointer;
+        }
+        &.is-selected {
+            transform: scale(1.2);
         }
         $categories: back, bottoms, front, glass, head, hige, hokuro, onepiece, pias, shoes, socks, strap, tops;
         @each $category in $categories {

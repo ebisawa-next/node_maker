@@ -2,12 +2,12 @@
     <!-- 子カテゴリがあれば表示 -->
     <% if (category.children) { %>
     <section class="sec-maker-parts-frame-category">
-        <%- include('./selectCategory', {childCategories: category.parts}) %>
+        <%- include('./selectCategory', {childCategories: category.parts, parent: category.name}) %>
     </section>
     <% } %>
 
     <!-- パーツ選択するエリア -->
-    <section class="sec-maker-parts-frame-parts">
+    <section class="sec-maker-parts-frame-parts prg-parts-frame-<%- category.name %>">
         <% let url = '/assets/images/pages/maker/parts/' %>
         <% if (category.children) { %>
             <% const childUrl = url + category.name + '/' %>

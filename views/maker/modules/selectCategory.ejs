@@ -1,5 +1,5 @@
-<ul class="mod-selectCategory prg-selectCategory" data-category="">
+<ul class="mod-selectCategory prg-selectCategory" data-parent="<%- category.name %>">
     <% for (const [index, category] of childCategories.entries()) { %>
-        <li class="mod-selectCategory-category is-<%- category.name %>" data-category="<%- category.name %>"></li>
+        <li class="mod-selectCategory-category is-<%- category.name %> prg-selectCategory-child" data-category="<%- category.name %>"></li>
     <% } %> 
 </ul>
