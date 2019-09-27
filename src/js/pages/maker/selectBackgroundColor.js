@@ -41,7 +41,6 @@ export default (Pickr) => {
         // もうちょい軽く動かしたいよね
         pickr.on('change', (color, instance) => {
             const code = color.toRGBA().toString(3)
-            console.log(code)
             canvas.style.backgroundColor = code
         })
 
