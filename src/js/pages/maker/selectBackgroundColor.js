@@ -6,9 +6,18 @@ class BgColor {
         this.colors = document.querySelectorAll('.prg-selectBackgroundColor-color')
     }
 
-    init () {
+    build () {
         this.createPickr()
-        console.log('init bgcolor')
+        this.eventListener()
+    }
+
+    eventListener() {
+        // イベント登録
+        this.colors.forEach((color) => {
+            color.addEventListener('click', () => {
+                this.clickedColors(color)
+            }, false)
+        })
     }
 
     clickedColors (color) {
@@ -55,14 +64,5 @@ class BgColor {
 
 export default (observer, Pickr) => {
     const bgColor = new BgColor(observer, Pickr)
-    bgColor.init()
-
-    // イベント登録
-    observer.on('clicked.colors', bgColor.clickedColors)
-
-    bgColor.colors.forEach((color) => {
-        color.addEventListener('click', () => {
-            observer.emit('clicked.colors',　color)
-        }, false)
-    })
+    bgColor.build()
 }
