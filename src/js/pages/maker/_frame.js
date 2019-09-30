@@ -18,18 +18,12 @@ class Frame {
             frame.classList.remove('is-selected')
         })
     }
-
-    oshushi() {
-        console.log('oshushi')
-    }
 }
 
 export default ((observer) => {
     const frame = new Frame()
 
     frame.init()
-
-    observer.on('hide', frame.oshushi)
 
     // onで起こしたいイベントを登録
     observer.on('tabs.clicked', (index) => {
@@ -42,7 +36,6 @@ export default ((observer) => {
         observer.emit('hide')
     }, false)
 
-    observer.emit('hide')
 
     observer.on('tabs.clicked', () => {
         console.log('tab clicked ok')

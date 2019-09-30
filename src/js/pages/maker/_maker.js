@@ -15,7 +15,7 @@ import tab from './_tab'
 import frame from './_frame'
 import createButton from './createButton'
 import result from './result'
-// import selectParts from './selectParts'
+import selectParts from './selectParts'
 
 export default () => {
     const observer = new Observer
@@ -27,7 +27,7 @@ export default () => {
     selectBackgroundColor(Pickr)
     selectCategory()
     selectVariation()
-    // selectParts(observer)
+    selectParts(observer)
 
     createButton(observer, html2canvas)
 }
