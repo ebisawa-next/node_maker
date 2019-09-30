@@ -8,6 +8,21 @@ class CreateButton {
         this.observer = observer
     }
 
+    eventListener() {
+        this.face.addEventListener('click', () => {
+            this.createIcon({
+                width: 200,
+                height: 200,
+                x: this.offset.left + 50,
+                y: this.offset.top + 20
+            })
+        }, false)
+
+        this.all.addEventListener('click', () => {
+            this.createIcon()
+        }, false)
+    }
+
     async createIcon(options) {
         const canvas = await html2canvas(this.target, options)
         const imgData = canvas.toDataURL()
@@ -18,17 +33,5 @@ class CreateButton {
 
 export default (observer, html2canvas) => {
     const createButton = new CreateButton(observer, html2canvas)
-
-    createButton.face.addEventListener('click', () => {
-        createButton.createIcon({
-            width: 200,
-            height: 200,
-            x: createButton.offset.left + 50,
-            y: createButton.offset.top + 20
-        })
-    }, false)
-
-    createButton.all.addEventListener('click', () => {
-        createButton.createIcon()
-    })
+    createButton.eventListener()
 }
