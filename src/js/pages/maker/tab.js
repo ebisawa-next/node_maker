@@ -1,41 +1,44 @@
-export default () => {
-    const frameAreas = document.querySelectorAll('.prg-frameArea')
-    const tabItems = document.querySelectorAll('.prg-tab-items-item')
-
-    // 最初だけ選択済みにしておく
-    document.querySelector('.prg-tab-items-item').classList.add('is-selected')
-    document.querySelector('.mod-selectParts').classList.add('is-selected')
-    // イベントリスナ
-    const event = () => {
-        tabItems.forEach((tab) => {
-            tab.addEventListener('click', () => {
-                const category = tab.dataset.category
-
-                // 全てのタブからis-selectedをremove
-                tabItems.forEach((allTab) => {
-                    allTab.classList.remove('is-selected')
-                })
-                // クリックしたやつだけis-selected
-                tab.classList.add('is-selected')
-
-                // フレーム消す
-                frameAreas.forEach((frame) => {
-                    frame.classList.remove('is-selected')
-                    if (frame.dataset.category == category) {
-                        frame.classList.add('is-selected')
-                        const childFrames = frame.querySelectorAll('.mod-selectParts')
-                        if(childFrames.length > 0) {
-                            childFrames.forEach((childFrame) => {
-                                childFrame.classList.remove('is-selected')
-                            })
-                            childFrames[0].classList.add('is-selected')
-                        }
-
-                    }
-                })
-
-            }, false)
+class Tab {
+    constructor() {
+        this.root = document.querySelector(('#prg-tab'))
+        this.tabs = this.root.querySelectorAll('.prg-tab-items-item')
+    }
+    init() {
+        this.resetTabs()
+        this.selectTab(0)
+    }
+    // タブがクリックされた時のハンドラ
+    onTabsClicked(index) {
+        this.resetTabs()
+        this.selectTab(index)
+    }
+    resetTabs() {
+        this.tabs.forEach((tab) => {
+            tab.classList.remove('is-selected')
         })
     }
-    event()
+    selectTab(index) {
+        this.tabs[index].classList.add('is-selected')
+    }
 }
+
+export default ((observer) => {
+    const tab = new Tab()
+
+    // 初期化
+    tab.init()
+
+    // onで起こしたいイベントを登録
+    observer.on('tabs.clicked', (index) => {
+        tab.onTabsClicked(index)
+    })
+
+    // イベントリスナ
+    for (const [index, t] of tab.tabs.entries()) {
+        t.addEventListener('click', (e) => {
+            const category = e.currentTarget.dataset.category
+            observer.emit('tabs.clicked', index)
+        }, false)
+    }
+
+})

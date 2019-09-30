@@ -1,27 +1,37 @@
-export default () => {
-    // frameの一番最初だけis-selectedしておく
-    document.querySelector('.prg-frameArea').classList.add('is-selected');
-
-    function addEventListener () {
-        const parts = document.querySelectorAll('.prg-frame-parts');
-        for (const part of parts) {
-            part.addEventListener('click', () => {
-                const category = part.dataset.category,
-                    path = part.dataset.path,
-                    url = `url(${part.dataset.url}${category}/cv/${path}`,
-                    target = document.getElementById(`prg-canvas-${category}`)
-                target.style.backgroundImage = url
-            }, false);
-        }
-
-        const nones = document.querySelectorAll('.prg-frame-none')
-        for (const none of nones) {
-            none.addEventListener('click', () => {
-                const category = none.dataset.category,
-                    noneTarget = document.getElementById(`prg-canvas-${category}`)
-                noneTarget.style.backgroundImage = 'none'
-            }, false);
-        }
+class Frame {
+    constructor() {
+        this.root = document.querySelector('#prg-frame')
+        this.allFrames = this.root.querySelectorAll('.prg-frameArea')
     }
-    addEventListener();
+
+    init() {
+        this.showSelectedFrame(0)
+    }
+    showSelectedFrame(index) {
+        this.hideAllFrames()
+        this.allFrames[index].classList.add('is-selected')
+    }
+
+    hideAllFrames() {
+        this.allFrames.forEach((frame) => {
+            frame.classList.remove('is-selected')
+        })
+    }
 }
+
+export default ((observer) => {
+    const frame = new Frame()
+
+    frame.init()
+
+    // onで起こしたいイベントを登録
+    observer.on('tabs.clicked', (index) => {
+        frame.showSelectedFrame(index)
+        // tab.onTabsClicked(index)
+    })
+
+
+    frame.root.addEventListener('click', () => {
+        observer.emit('hide')
+    }, false)
+})
