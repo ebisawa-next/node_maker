@@ -1,12 +1,18 @@
 class Frame {
-    constructor() {
+    constructor(observer) {
+        this.observer = observer
         this.root = document.querySelector('#prg-frame')
         this.allFrames = this.root.querySelectorAll('.prg-frameArea')
+    }
+
+    build() {
+        this.init()
     }
 
     init() {
         this.showSelectedFrame(0)
     }
+
     showSelectedFrame(index) {
         this.hideAllFrames()
         this.allFrames[index].classList.add('is-selected')
@@ -20,18 +26,11 @@ class Frame {
 }
 
 export default ((observer) => {
-    const frame = new Frame()
+    const frame = new Frame(observer)
+    frame.build()
 
-    frame.init()
-
-    // onで起こしたいイベントを登録
+    // // onで起こしたいイベントを登録
     observer.on('tabs.clicked', (index) => {
         frame.showSelectedFrame(index)
-        // tab.onTabsClicked(index)
     })
-
-
-    frame.root.addEventListener('click', () => {
-        observer.emit('hide')
-    }, false)
 })

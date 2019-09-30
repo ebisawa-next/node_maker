@@ -8,6 +8,10 @@ class CreateButton {
         this.observer = observer
     }
 
+    build () {
+        this.eventListener()
+    }
+
     eventListener() {
         this.face.addEventListener('click', () => {
             this.createIcon({
@@ -33,5 +37,5 @@ class CreateButton {
 
 export default (observer, html2canvas) => {
     const createButton = new CreateButton(observer, html2canvas)
-    createButton.eventListener()
+    createButton.build()
 }
