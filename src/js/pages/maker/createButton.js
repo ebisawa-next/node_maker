@@ -1,35 +1,34 @@
-export default () => {
-    (() => {
-        const target = document.querySelector('#prg-canvas')
-        const offset = target.getBoundingClientRect()
-        const createButton = document.querySelector('#prg-createButton');
-        const createButtonAll = document.querySelector('#prg-createButtonAll');
+class CreateButton {
+    constructor(observer, html2canvas) {
+        this.target = document.querySelector('#prg-canvas')
+        this.offset = this.target.getBoundingClientRect()
+        this.face = document.querySelector('#prg-createButton')
+        this.all = document.querySelector('#prg-createButtonAll')
+        this.html2canvas = html2canvas
+        this.observer = observer
+    }
 
-        // 顔だけ
-        createButton.addEventListener('click', async () => {
-            const canvas = await html2canvas(target, {
-                width: 200,
-                height: 200,
-                x: offset.left + 50,
-                y: offset.top + 20
-            })
-            const imgData = canvas.toDataURL()
-            document.querySelector('#prg-result-icon').src = imgData
-            document.querySelector('#prg-result-download').href = imgData
+    async createIcon(options) {
+        const canvas = await html2canvas(this.target, options)
+        const imgData = canvas.toDataURL()
 
-            // モーダルを開きます
-            document.querySelector('#prg-overlay').classList.remove('is-hide')
-        }, false)
+        this.observer.emit('created.icon', imgData)
+    }
+}
 
-        // 全身
-        createButtonAll.addEventListener('click', async () => {
-            const canvas = await html2canvas(target)
-            const imgData = canvas.toDataURL()
-            document.querySelector('#prg-result-icon').src = imgData
-            document.querySelector('#prg-result-download').href = imgData
+export default (observer, html2canvas) => {
+    const createButton = new CreateButton(observer, html2canvas)
 
-            // モーダルを開きます
-            document.querySelector('#prg-overlay').classList.remove('is-hide')
-        }, false)
-    })();
+    createButton.face.addEventListener('click', () => {
+        createButton.createIcon({
+            width: 200,
+            height: 200,
+            x: createButton.offset.left + 50,
+            y: createButton.offset.top + 20
+        })
+    }, false)
+
+    createButton.all.addEventListener('click', () => {
+        createButton.createIcon()
+    })
 }

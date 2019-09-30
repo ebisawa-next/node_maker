@@ -8,9 +8,9 @@ class Tab {
         this.selectTab(0)
     }
     // タブがクリックされた時のハンドラ
-    onTabsClicked(data) {
+    onTabsClicked(index) {
         this.resetTabs()
-        this.selectTab(data.index)
+        this.selectTab(index)
     }
     resetTabs() {
         this.tabs.forEach((tab) => {
@@ -37,7 +37,7 @@ export default ((observer) => {
     for(const[index, t] of tab.tabs.entries()) {
         t.addEventListener('click', (e) => {
             const category = e.currentTarget.dataset.category
-            observer.emit('tabs.clicked', {index: index, category: category})
+            observer.emit('tabs.clicked', index)
         }, false)
     }
 
