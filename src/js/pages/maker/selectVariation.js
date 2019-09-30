@@ -1,7 +1,6 @@
 class Variation {
     constructor (observer) {
         this.observer = observer
-
         this.variation = document.querySelectorAll('.prg-selectVariation-variate')
         this.bodyCanvas = document.getElementById(`prg-canvas-body`)
         this.fronthairCanvas = document.getElementById(`prg-canvas-fronthair`)

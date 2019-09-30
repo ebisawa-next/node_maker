@@ -24,7 +24,7 @@ export default () => {
     result(observer)
     tab(observer)
     selectBackgroundColor(observer, Pickr)
-    selectCategory()
+    selectCategory(observer)
     selectVariation(observer)
     selectParts(observer)
     createButton(observer, html2canvas)
