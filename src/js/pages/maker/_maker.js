@@ -10,9 +10,9 @@ import selectBackgroundColor from './selectBackgroundColor'
 import selectCategory from './selectCategory'
 import selectVariation from './selectVariation'
 
-// observer pattern
-import tab from './_tab'
-import frame from './_frame'
+// observer pattern modules
+import tab from './tab'
+import frame from './frame'
 import createButton from './createButton'
 import result from './result'
 import selectParts from './selectParts'
@@ -24,10 +24,11 @@ export default () => {
     frame(observer)
     result(observer)
     tab(observer)
-    selectBackgroundColor(Pickr)
+    selectBackgroundColor(observer, Pickr)
     selectCategory()
     selectVariation()
     selectParts(observer)
 
     createButton(observer, html2canvas)
 }
+
