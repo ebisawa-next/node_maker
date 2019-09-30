@@ -15,30 +15,33 @@ class Variation {
             val = variate.dataset.val,
             canvas = document.getElementById(`prg-canvas-${target}`)
 
-            this.changeUrl(canvas, val)
+        changeUrl(canvas, val)
 
-            // 一緒に連動する人々
-            if (target == 'face') {
-                this.changeUrl(this.bodyCanvas, val)
-                return
-            }
-            if (target == 'fronthair') {
-                this.changeUrl(this.backhairCanvas, val)
-                return
-            }
-            if (target == 'backhair') {
-                this.changeUrl(this.fronthairCanvas, val)
-                return
-            }
-    }
+        // 一緒に連動する人々
+        if (target == 'face') {
+            const bodyCanvas = document.getElementById(`prg-canvas-body`)
+            changeUrl(bodyCanvas, val)
+            return
+        }
+        if (target == 'fronthair') {
+            const backhairCanvas = document.getElementById(`prg-canvas-backhair`)
+            changeUrl(backhairCanvas, val)
+            return
+        }
+        if (target == 'backhair') {
+            const fronthairCanvas = document.getElementById(`prg-canvas-fronthair`)
+            changeUrl(fronthairCanvas, val)
+            return
+        }
 
-    changeUrl (canvas, val) {
-        const currentStyles = canvas.currentStyle || document.defaultView.getComputedStyle(canvas, '')
-        const currentUrl = currentStyles.backgroundImage
-        const str = currentUrl.split('_')
-        str[1] = `_${val}.png`
-        const newUrl = str[0] + str[1]
-        canvas.style.backgroundImage = newUrl
+        function changeUrl (canvas, val) {
+            const currentStyles = canvas.currentStyle || document.defaultView.getComputedStyle(canvas, '')
+            const currentUrl = currentStyles.backgroundImage
+            const str = currentUrl.split('_')
+            str[1] = `_${val}.png`
+            const newUrl = str[0] + str[1]
+            canvas.style.backgroundImage = newUrl
+        }
     }
 }
 
