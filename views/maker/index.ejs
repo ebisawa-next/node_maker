@@ -14,7 +14,7 @@
             </section>
             <section class="sec-maker-parts">
                 <%- include('./modules/tab', {categories: categories}) %>
-                <section class="sec-maker-parts-frame">
+                <section class="sec-maker-parts-frame" id="prg-frame">
                     <% for (const [index, category] of categories.entries()) { %>
                         <%- include('./modules/frame', {category: category}) %>
                     <% } %>

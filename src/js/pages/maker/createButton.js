@@ -1,35 +1,41 @@
-export default () => {
-    (() => {
-        const target = document.querySelector('#prg-canvas')
-        const offset = target.getBoundingClientRect()
-        const createButton = document.querySelector('#prg-createButton');
-        const createButtonAll = document.querySelector('#prg-createButtonAll');
+class CreateButton {
+    constructor(observer, html2canvas) {
+        this.target = document.querySelector('#prg-canvas')
+        this.offset = this.target.getBoundingClientRect()
+        this.face = document.querySelector('#prg-createButton')
+        this.all = document.querySelector('#prg-createButtonAll')
+        this.html2canvas = html2canvas
+        this.observer = observer
+    }
 
-        // 顔だけ
-        createButton.addEventListener('click', async () => {
-            const canvas = await html2canvas(target, {
+    build () {
+        this.eventListener()
+    }
+
+    eventListener() {
+        this.face.addEventListener('click', () => {
+            this.createIcon({
                 width: 200,
                 height: 200,
-                x: offset.left + 50,
-                y: offset.top + 20
+                x: this.offset.left + 50,
+                y: this.offset.top + 20
             })
-            const imgData = canvas.toDataURL()
-            document.querySelector('#prg-result-icon').src = imgData
-            document.querySelector('#prg-result-download').href = imgData
-
-            // モーダルを開きます
-            document.querySelector('#prg-overlay').classList.remove('is-hide')
         }, false)
 
-        // 全身
-        createButtonAll.addEventListener('click', async () => {
-            const canvas = await html2canvas(target)
-            const imgData = canvas.toDataURL()
-            document.querySelector('#prg-result-icon').src = imgData
-            document.querySelector('#prg-result-download').href = imgData
-
-            // モーダルを開きます
-            document.querySelector('#prg-overlay').classList.remove('is-hide')
+        this.all.addEventListener('click', () => {
+            this.createIcon()
         }, false)
-    })();
+    }
+
+    async createIcon(options) {
+        const canvas = await html2canvas(this.target, options)
+        const imgData = canvas.toDataURL()
+
+        this.observer.emit('created.icon', imgData)
+    }
+}
+
+export default (observer, html2canvas) => {
+    const createButton = new CreateButton(observer, html2canvas)
+    createButton.build()
 }
