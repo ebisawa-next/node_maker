@@ -118,10 +118,9 @@ const getImagePathes = async (categories) => {
     return res
 }
 
-app.get("/maker", (req, res, next) => {
+app.get("/maker/", (req, res, next) => {
     (async () => {
         const parts = await getImagePathes(categories)
-        console.log(parts)
         // 背景色のマスタデータ読み込む
         const backgroundColors = require('./api/backgroundColors')
 
